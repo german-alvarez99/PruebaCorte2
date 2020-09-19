@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.pruebacorte2.MainActivity3;
 import com.pruebacorte2.WebService.HttpRequest.HttpRequestException;
 
 import org.json.JSONException;

@@ -29,7 +29,15 @@ public class MainActivity2 extends AppCompatActivity implements Asynchtask {
 
     private TextView txtTituloC,txtDescripcionC;
     private ImageView imgImagenRevistaC;
-    private String idRevistaUtilizar="0";
+    private static String idRevistaUtilizar="0";
+
+    public static String getIdRevistaUtilizar() {
+        return idRevistaUtilizar;
+    }
+
+    public static void setIdRevistaUtilizar(String idRevistaUtilizar) {
+        MainActivity2.idRevistaUtilizar = idRevistaUtilizar;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

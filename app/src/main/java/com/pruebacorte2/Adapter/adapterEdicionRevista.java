@@ -1,5 +1,6 @@
 package com.pruebacorte2.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.pruebacorte2.MainActivity;
+import com.pruebacorte2.MainActivity2;
+import com.pruebacorte2.MainActivity3;
 import com.pruebacorte2.Modelos.EdicionRevista;
 import com.pruebacorte2.R;
 
@@ -42,6 +46,15 @@ public class adapterEdicionRevista extends RecyclerView.Adapter<adapterEdicionRe
         Glide.with(holder.itemView)
                 .load(lstEdicionRevista.get(position).getImagen())
                 .into(holder.imgEdicionRevista);
+
+        holder.titulo=lstEdicionRevista.get(position).getTitulo();
+        holder.volumen=lstEdicionRevista.get(position).getVolumen();
+        holder.numero=lstEdicionRevista.get(position).getNumero();
+        holder.anio=lstEdicionRevista.get(position).getAnio();
+        holder.doi=lstEdicionRevista.get(position).getDoi();
+        holder.fecha=lstEdicionRevista.get(position).getFecha();
+        holder.imagen=lstEdicionRevista.get(position).getImagen();
+        holder.idEdicion=lstEdicionRevista.get(position).getId();
     }
 
     @Override
@@ -53,8 +66,29 @@ public class adapterEdicionRevista extends RecyclerView.Adapter<adapterEdicionRe
         TextView txtTitulo, txtVolumen,txtNumero, txtAnio,txtDoi,txtFecha;
         ImageView imgEdicionRevista;
 
+        String idEdicion ,titulo, volumen,numero, anio,doi,fecha,imagen;
+
         public ViewHolderEdicionRevista(@NonNull View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(view.getContext(), MainActivity3.class);
+                    String idRevista=MainActivity2.getIdRevistaUtilizar();
+                    i.putExtra("idRevista",  idRevista);
+                    i.putExtra("idEdicion",  idEdicion);
+                    i.putExtra("titulo",  titulo);
+                    i.putExtra("volumen",  volumen);
+                    i.putExtra("numero",  numero);
+                    i.putExtra("anio",  anio);
+                    i.putExtra("doi",  doi);
+                    i.putExtra("fecha",  fecha);
+                    i.putExtra("imagen",  imagen);
+                    view.getContext().startActivity(i);
+                }
+            });
+
             txtTitulo= (TextView) itemView.findViewById(R.id.txtTituloEdicionRevista);
             txtVolumen= (TextView) itemView.findViewById(R.id.txtVolumenEdicion);
             txtNumero= (TextView) itemView.findViewById(R.id.txtNumeroEdicion);
