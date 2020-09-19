@@ -104,7 +104,6 @@ public class MainActivity3 extends AppCompatActivity implements Asynchtask {
 
     @Override
     public void processFinish(String result) throws JSONException {
-        String skasnasn = "dlsdla";
         List<String> lstCategoria = new ArrayList<String>();
         List<Articulo> lstArticulosProvicional = new ArrayList<Articulo>();
         lstArticuloMain=new ArrayList<ArticuloMain>();
@@ -124,7 +123,7 @@ public class MainActivity3 extends AppCompatActivity implements Asynchtask {
             {
                 for(int j=0;j<lstArticulo.size();j++)
                 {
-                    lstArticulosProvicional.add(lstArticulo.get(i));
+                    lstArticulosProvicional.add(lstArticulo.get(j));
                 }
                 lstArticuloMain.add(new ArticuloMain(lstCategoria.get(i), lstArticulosProvicional));
             }

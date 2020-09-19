@@ -3,6 +3,7 @@ package com.pruebacorte2.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,6 +36,15 @@ public class adapterArticuloChild extends RecyclerView.Adapter<adapterArticuloCh
         holder.txtPalabrasClaves.setText(parsearPalabrasClaves(lstArticulos.get(position).getKeywords()));
         holder.txtDoi.setText(lstArticulos.get(position).getDoi());
         holder.txtFecha.setText(lstArticulos.get(position).getDate_published());
+
+        for (int e=0;e<lstArticulos.get(position).getGaleys().size();e++){
+            if(lstArticulos.get(position).getGaleys().get(e).getLabel().equals("PDF")){
+                holder.btnPdf.setVisibility(View.VISIBLE);
+            }
+            if(lstArticulos.get(position).getGaleys().get(e).getLabel().equals("HTML")){
+                holder.btnHtml.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override
@@ -43,14 +53,15 @@ public class adapterArticuloChild extends RecyclerView.Adapter<adapterArticuloCh
     }
 
     public String parsearPalabrasClaves(List<String> datos){
-        String palabras="";
+        String palabras="keywords: ";
         for (int i=0; i<datos.size();i++)
-            palabras+=datos.get(i);
-        return palabras;
+            palabras+=datos.get(i)+", ";
+        return palabras.substring(0,palabras.length()-2);
     }
 
     public class ViewHolderArticulo extends RecyclerView.ViewHolder {
         TextView txtTitulo, txtPalabrasClaves, txtDoi, txtFecha;
+        Button btnPdf, btnHtml;
 
 //        String titulo, PalabrasClaves, doi, fecha;
 
@@ -60,6 +71,8 @@ public class adapterArticuloChild extends RecyclerView.Adapter<adapterArticuloCh
             txtPalabrasClaves = (TextView) itemView.findViewById(R.id.txtPClaveArticuloListar);
             txtDoi = (TextView) itemView.findViewById(R.id.txtDoiArticuloListar);
             txtFecha = (TextView) itemView.findViewById(R.id.txtFechaArticuloListar);
+            btnPdf=itemView.findViewById(R.id.btnPdfActiculos);
+            btnHtml=itemView.findViewById(R.id.btnHtmlArticulos);
         }
     }
 }

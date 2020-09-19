@@ -97,8 +97,8 @@ public class Articulo {
         this.section_id = jsonObject.getString("section_id");
         this.seccion = jsonObject.getString("section");
         this.title = jsonObject.getString("title");
-        this.doi = jsonObject.getString("doi");
-        this.date_published = jsonObject.getString("date_published");
+        this.doi ="DOI: "+ jsonObject.getString("doi");
+        this.date_published ="Fecha de publicación: "+ jsonObject.getString("date_published");
         this.keywords = obtenerPalabrasClaves(jsonObject.getJSONArray("keywords"));
         this.galeys = Galey.JsonObjectsBuild(jsonObject.getJSONArray("galeys"));
         this.authors = Autor.JsonObjectsBuild(jsonObject.getJSONArray("authors"));

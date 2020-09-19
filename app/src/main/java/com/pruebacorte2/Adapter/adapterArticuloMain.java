@@ -33,8 +33,6 @@ public class adapterArticuloMain extends RecyclerView.Adapter<adapterArticuloMai
     @Override
     public void onBindViewHolder(@NonNull ViewHolderArticuloMain holder, int position) {
         holder.txtCategoria.setText(lstArticulosMain.get(position).getCategoriaArticulo());
-
-
         holder.rcChild.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(),RecyclerView.VERTICAL,false));
         adapterArticuloChild adapter= new adapterArticuloChild(lstArticulosMain.get(position).getLstArticulo());
         holder.rcChild.setAdapter(adapter);
